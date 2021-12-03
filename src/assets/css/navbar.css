@@ -1,0 +1,24 @@
+.navbar {
+	height: 4.5rem;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 2px 0 var(--shadow);
+}
+.navbar__logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+.navbar__logo > img{
+    height: 100%;
+}
+.navbar__logo > p{
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 600;
+}

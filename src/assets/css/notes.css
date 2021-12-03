@@ -1,0 +1,31 @@
+.notes{
+    margin: auto 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.note {
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 0.7rem;
+    border: 1px solid var(--border);
+	border-radius: 8px;
+    max-height: 200px;
+    max-width: 500px;
+}
+.DraftEditor-root {
+    height: 100% !important;
+    overflow-y: scroll;
+}
+@media only screen and (max-width: 720px) {
+    .notes{
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+@media only screen and (max-width: 520px) {
+    .notes{
+        grid-template-columns: 1fr;
+    }
+}
