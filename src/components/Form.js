@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import PlusIcon from "@heroicons/react/solid/PlusIcon";
 import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
 import { db } from "../firebase";
-import { Editor, EditorState, convertToRaw } from "draft-js";
+import { Editor, EditorState, convertToRaw, RichUtils } from "draft-js";
 
 const Form = () => {
 	const user = useSelector(selectUser),
@@ -19,7 +19,7 @@ const Form = () => {
 			title,
 			note: convertToRaw(editorContent),
 			created: serverTimestamp(),
-			updated: serverTimestamp()
+			updated: serverTimestamp(),
 		})
 			.then(() => {
 				setTitle("");
@@ -27,6 +27,14 @@ const Form = () => {
 			})
 			.catch((err) => console.log(err));
 	};
+
+	const handleKeyCommand = (command, editorState) => {
+		const newState = RichUtils.handleKeyCommand(editorState, command);
+		if(newState){
+			setEditorState(newState);
+		}
+	}
+
 	return (
 		<form onSubmit={(e) => e.preventDefault()} className="form">
 			<input
@@ -36,13 +44,7 @@ const Form = () => {
 				value={title}
 				required
 			/>
-			<Editor editorState={editorState} onChange={setEditorState} />
-			{/* <textarea
-				placeholder="Take a note..."
-				onChange={(e) => setNote(e.target.value)}
-				value={note}
-				required
-			/> */}
+			<Editor placeholder="Take a note..." editorState={editorState} onChange={setEditorState} handleKeyCommand={handleKeyCommand} />
 			<IconButton onClick={addNote} className="form__btn">
 				<PlusIcon className="icon" />
 			</IconButton>

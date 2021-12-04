@@ -11,8 +11,7 @@ const Login = () => {
 			{
 				name: user.profile.name,
 				email: user.profile.email,
-				photo: user.profile.picture,
-                notes: []
+				photo: user.profile.picture
 			},
 			{ merge: true }
 		).catch((err) => console.log(err));

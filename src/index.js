@@ -11,6 +11,7 @@ import "./assets/css/home.css";
 import "./assets/css/navbar.css";
 import "./assets/css/form.css";
 import "./assets/css/notes.css";
+import "./assets/css/loader.css";
 import "draft-js/dist/Draft.css";
 
 ReactDOM.render(

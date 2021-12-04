@@ -5,6 +5,7 @@
     gap: 2rem;
 }
 .note {
+    position: relative;
     color: var(--text);
     display: flex;
     flex-direction: column;
@@ -19,6 +20,48 @@
     height: 100% !important;
     overflow-y: scroll;
 }
+.note__loading {
+    z-index: 10;
+    padding: 5px 5px 0;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: fit-content;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    color: #888;
+    font-weight: 500;
+    background-color: var(--bg-primary);
+}
+.note__loading > div{
+    width: 15px;
+    height: 15px;
+    border: 0.25rem solid rgba(120,120,120,0.4);
+	border-top: 0.25rem solid #888;
+    border-radius: 50%;
+	animation: rotate 1.5s linear infinite;
+}
+.note:hover .note__deleteBtn{
+    display: inline-flex !important;
+}
+.note__deleteBtn {
+    display: none !important;
+	z-index: 10;
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    transform: translate(50%, 30%);
+	width: fit-content;
+	background-color: var(--bg-secondary) !important;
+	border-radius: 50%;
+}
+.note__deleteBtn > .icon {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
 @media only screen and (max-width: 720px) {
     .notes{
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -27,5 +70,8 @@
 @media only screen and (max-width: 520px) {
     .notes{
         grid-template-columns: 1fr;
+    }
+    .note__deleteBtn {
+        transform: translate(-30%, -50%);
     }
 }
